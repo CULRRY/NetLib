@@ -7,6 +7,9 @@
     <Filter Include="Log">
       <UniqueIdentifier>{b31b8f88-b08b-4062-b4f5-23b45f717988}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{e0a2b015-3c90-4e2b-9d0e-9b005e08a806}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -21,9 +24,21 @@
     <ClInclude Include="Macro.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TLS.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="TLS.cpp">
       <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>

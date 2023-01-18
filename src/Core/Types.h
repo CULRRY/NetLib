@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 
 /* Basic Types */
 using byte		= unsigned char;
@@ -11,3 +12,6 @@ using uint16	= unsigned __int16;
 using uint32	= unsigned __int32;
 using uint64	= unsigned __int64;
 using wchar		= wchar_t;
+
+template<typename T>
+using Atomic = std::atomic<T>;

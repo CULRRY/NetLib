@@ -2,9 +2,11 @@
 
 #include "Types.h"
 #include "Macro.h"
+#include "TLS.h"
 
 #include <windows.h>
 #include <iostream>
+#include <thread>
 using namespace std;
 
 #include <WinSock2.h>

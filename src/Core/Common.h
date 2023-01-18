@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Types.h"
+#include "Macro.h"
 
 #include <windows.h>
 #include <iostream>

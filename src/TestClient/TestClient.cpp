@@ -2,4 +2,5 @@
 
 int main()
 {
+	SIZE16(int);
 }

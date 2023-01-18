@@ -4,6 +4,9 @@
     <Filter Include="Main">
       <UniqueIdentifier>{8f07bf78-c15c-4632-87c2-649abced25ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{b31b8f88-b08b-4062-b4f5-23b45f717988}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -13,6 +16,9 @@
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
       <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>

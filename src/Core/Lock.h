@@ -3,6 +3,10 @@
 /**
  * @class Lock
  * @brief RW SpinLock
+ * @details
+ * WriteLock 재귀적으로 사용가능.
+ * W -> R 가능,
+ * R -> W 불가능.
  */
 
  /*--------------------------------------------
@@ -31,3 +35,33 @@ private:
 	uint16			_writeCount = 0;
 };
 
+
+/**
+ * @class ReadLockGuard
+ * @brief lock은 실수를 방지하기 위해 무조건 LockGuard로만 사용.
+ */
+class ReadLockGuard
+{
+public:
+	ReadLockGuard(Lock& lock, const char* name) : _lock(lock), _name(name) { _lock.ReadLock(name); }
+	~ReadLockGuard() { _lock.ReadUnlock(_name); }
+
+private:
+	Lock&		_lock;
+	const char* _name;
+};
+
+/**
+ * @class WriteLockGuard
+ * @brief lock은 실수를 방지하기 위해 무조건 LockGuard로만 사용.
+ */
+class WriteLockGuard
+{
+public:
+	WriteLockGuard(Lock& lock, const char* name) : _lock(lock), _name(name) { _lock.WriteLock(name); }
+	~WriteLockGuard() { _lock.WriteUnlock(_name); }
+
+private:
+	Lock&		_lock;
+	const char* _name;
+};

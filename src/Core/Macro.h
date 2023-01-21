@@ -30,3 +30,21 @@
 		__analysis_assume(expr);			\
 	}										\
 }
+
+/// @brief 클래스 내에서 사용할 여러개의 락을 정의해주는 매크로.
+#define USE_MANY_LOCKS(count)	Lock _locks[count];
+
+/// @brief 클래스 내에서 사용할 락을 정의해주는 매크로. 
+#define USE_LOCK				USE_MANY_LOCKS(1);
+
+/// @brief idx번째 ReadLock을 잡는 매크로.
+#define READ_LOCK_IDX(idx)		ReadLockGuard readLockGuard_##idx(_locks[idx], typeid(this).name());
+
+/// @brief 한개의 락을 사용할때, ReadLock을 잡는 매크로.
+#define READ_LOCK				READ_LOCK_IDX(0);
+
+/// @brief idx번째 WriteLock을 잡는 매크로.
+#define WRITE_LOCK_IDX(idx)		WriteLockGuard writeLockGuard_##idx(_locks[idx], typeid(this).name());
+
+/// @brief 한개의 락을 사용할때, WriteLock을 잡는 매크로.
+#define WRITE_LOCK				WRITE_LOCK_IDX(0);

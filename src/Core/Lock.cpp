@@ -6,6 +6,7 @@ void Lock::WriteLock(const char* name)
 	const uint32 lockTreadId = (_lockFlag.load() & WRITE_THREAD_MASK) >> 16;
 	if (lockTreadId == LThreadID)
 	{
+		// 동일한 쓰레드에 한해서 재귀적으로 Lock 허용.
 		_writeCount++;
 		return;
 	}
@@ -17,6 +18,8 @@ void Lock::WriteLock(const char* name)
 		for (uint32 spinCount = 0; spinCount < MAX_SPIN_COUNT; spinCount++)
 		{
 			uint32 expected = EMPTY_FLAG;
+			// WriteLock은 EMPTY_FLAG일때만 잡을 수 있음
+			// -> READ_LOCK이 잡힌상태에서 잡을 수 없음.
 			if (_lockFlag.compare_exchange_strong(expected, desired))
 			{
 				_writeCount++;
